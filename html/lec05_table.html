@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블</title>
+</head>
+<body>
+    <h1>테이블이란?</h1>
+    <table border="1">
+        <caption>표1. 우리반 성적</caption>
+        <tr>
+            <th>이름</th>
+            <th>점수</th>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td>이영희</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>20</td>
+        </tr>
+    </table>
+    <h1>테이블 병합</h1>
+    <table border="1">
+        <tr>
+            <td rowspan="3">내용1</td>
+            <td>내용2</td>
+            <td>내용3</td>
+        </tr>
+        <tr>
+            <!-- <td>내용4</td> -->
+            <td colspan="2">내용5</td>
+            <!-- <td>내용6</td> -->
+        </tr>
+        <tr>
+            <!-- <td>내용7</td> -->
+            <td>내용8</td>
+            <td>내용9</td>
+        </tr>
+    </table>
+    <br>
+    <h1>수업 실습</h1>
+    <table border="1">
+        <caption>행 통합</caption>
+        <tr>
+            <th>1행</th>
+            <td>1행 1열</td>
+        </tr>
+        <tr>
+            <th rowspan="2">2행</th>
+            <td>2행 2열</td>
+        </tr>
+        <tr>
+            <td>3행 2열</td>
+        </tr>
+    </table>
+    <br>
+    <table border="1">
+        <caption>열 통합</caption>
+        <tr>
+            <th>1열</th>
+            <th colspan="2">2열</th>
+        </tr>
+        <tr>
+            <td>2행 1열</td>
+            <td>2행 2열</td>
+            <td>2행 3열</td>
+        </tr>
+    </table>
+    <h1>테이블 구조</h1>
+    <table border="1">
+        <colgroup>
+            <!-- key:value; -->
+            <col width="30%" style="background-color:aquamarine;">
+            <col width="70%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>이름</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>김가남</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>김나남</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>김다담</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>김라람</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>김마맘</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>김바밤</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>인원수</td>
+                <td>6명</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <h1>수업 실습</h1>
+    <h2>종합 문제</h2>
+    <table border="1">
+        <colgroup>
+            <col>
+            <col>
+            <col style="background-color:beige;">
+        </colgroup>
+        <caption>출장비용 보고서</caption>
+        <thead>
+            <tr>
+                <th>대분류</th>
+                <th>중분류</th>
+                <th>금액</th>
+            </tr>
+            <tr>
+                <td>교통비</td>
+                <td>ktx</td>
+                <td>100000</td>
+            </tr>
+            <tr>
+                <td rowspan="2">식비</td>
+                <td>점심</td>
+                <td>20000</td>
+            </tr>
+            <tr>
+                <td>저녁</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>숙박비</td>
+                <td>모텔</td>
+                <td>50000</td>
+            </tr>
+            <tr>
+                <td colspan="2">총합계</td>
+                <td>1900000</td>
+            </tr>
+        </thead>
+    </table>
+    <br>
+    <div>콘텐츠1</div>
+    <div>콘텐츠2</div>
+    <span>콘텐츠3</span>
+    <span>콘텐츠4</span>
+    <div>
+        <span>콘텐츠5</span>
+        <span style="background-color: rebeccapurple;">쓸수</span>
+        <span>있나요?</span>
+    </div>
+    <div>
+        네~ 쓸수 있어요.
+    </div>
+</body>
+</html>
