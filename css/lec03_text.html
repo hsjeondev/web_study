@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글꼴</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>글꼴</h1>
+        <style>
+            .basic{font-family: '궁서';}
+            .web{font-family: "Single Day", serif;}
+        </style>
+    <p class="basic">기본 글꼴 사용하기</p>
+    <p class="web">웹폰트 적용하기</p>
+    <style>
+        #size {font-size: 40px;}
+        #size > p:first-child{
+            font-size: 0.5em;
+        }
+    </style>
+    <div id="size">
+        <p>em을 기준으로~</p>
+        <p>rem을 기준으로~</p>
+    </div>
+    <h1>글자 굵기</h1>
+    <p style="font-weight: normal;">Lorem ipsum dolor sit amet</p>
+    <p style="font-weight : bold">consectetur adipiscing elit</p>
+    <p style="font-weight: bolder;">incididunt ut labore et dolore</p>
+    <p style="font-weight: lighter;">minim veniam, quis nostrud</p>
+    <p style="font-weight: 700;">nisi ut aliquip ex ea commodo</p>
+    <style>
+        .colorful{
+            background-color: rgb(1, 1, 100.8);
+            color:rgb(246, 250, 10);}
+    </style>
+    <p class="colorful">알록달록</p>
+    <style>
+        .deco > #under{text-decoration: underline;}
+        .deco > #over{text-decoration: overline;}
+        .deco > #through{text-decoration: line-through;}
+    </style>
+    <div class="deco">
+        <span id="under">Lipsum</span>
+        <span id="over">Lipsum</span>
+        <span id="through">Lipsum</span>
+    </div>
+    <a style="text-decoration: none; color: black;" href="https://www.naver.com" target="_blank">네이버</a>
+    <h1>간격 조정</h1>
+    <p>
+        consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad 
+        minim veniam, quis nostrud exercitation ullamco laboris 
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+        dolor in reprehenderit in voluptate velit esse cillum dolore 
+        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+        proident, sunt in culpa qui officia deserunt mollit anim id est
+    </p>
+    <style>
+        .para{
+            border : 5px dotted salmon;
+        }
+    </style>
+    <p class="para">
+        consectetur adipiscing elit, sed do eiusmod tempor
+    </p>
+</body>
+</html>

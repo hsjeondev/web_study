@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부정 선택자</title>
 </head>
+<style>
+    #container > .n:not(span){background-color: aqua;}
+    :not(p){color: crimson;}
+</style>
 <body>
-    
+    <div id="container">
+        <p>Lorem ipsum dolor sit amet</p>
+        <p class="n">Lorem ipsum dolor sit amet</p>
+        <span class="n">Lorem ipsum dolor sit amet</span>
+        <div>Lorem ipsum dolor sit amet</div>
+    </div>
+    <style>
+        h1{color:blue;}
+        h1{color:red;}
+    </style>
+    <h1>확인</h1>
+    <style>
+        #a{color: gold;}
+        .b{color:red;}
+        p{color:purple !important;}
+    </style>
+    <p style="color: green;" class="b" id="a">우선순위</p>
 </body>
 </html>
