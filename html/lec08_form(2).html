@@ -17,5 +17,82 @@
     <input type="date" min="0001-01-01" max="9999-12-31" value="9999-12-31">
     <input type="month" min="2025-10">
     <input type="time" value="16:10">
+    <br>
+    <!-- checkbox : name이 같은 여러개 값 선택 -->
+    <input type="checkbox" value="1" id="jja" name="lunch">
+    <label for="jja">짜장면</label>
+    <input type="checkbox" value="2" id="bok" name="lunch">
+    <label for="bok">볶음밥</label>
+    <!-- radio : name이 같은 것중에 하나만 -->
+    <input type="radio" value="1" id="seoul" name="addr">
+    <label for="seoul">서울</label>
+    <input type="radio" value="2" id="dae" name="addr">
+    <label for="dae">대전</label>
+    <br>
+    <!-- select -->
+    <select name="user_select" id="user_select">
+        <option value="0">선택하기</option>
+        <option value="1">항목1</option>
+        <option value="2">항목2</option>
+    </select>
+    <br>
+    <progress max="100" value="1"></progress>
+    <br>
+    <form method="get" name="testFrm" action="#">
+        <input type="text" required>
+        <button type="button"
+        onclick="alrt('안녕');">버튼</button>
+        <button type="submit">제출</button>
+        <button type="reset">테스트</button>
+        <input type="button" value="input타입">
+        <button>확인</button>
+    </form>
+    <br>
+    <h1>실습 과제</h1>
+    <h2>피자 주문하기</h2>
+    <form>
+        <fieldset>
+            <legend>고객정보</legend>
+            <label for="u_name">고객명 : </label>
+            <input type="text" id="u_name">
+            <br>
+            <label for="u_phone">전화번호 : </label>
+            <input type="text" id="u_phone">
+            <br>
+            <label for="u_email">E-mail : </label>
+            <input type="email" id="u_email">
+        </fieldset>
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <input type="radio" name="size" id="small">
+            <label for="small">Small</label>
+            <br>
+            <input type="radio" name="size" id="medium">
+            <label for="medium">Medium</label>
+            <br>
+            <input type="radio" name="size" id="large">
+            <label for="large">Large</label>
+        </fieldset>
+        <fieldset>
+            <legend>토핑 선택</legend>
+            <input type="checkbox" name="topping" id="shrimp">
+            <label for="shrimp">새우</label>
+            <br>
+            <input type="checkbox" name="topping" id="sweetpotato">
+            <label for="sweetpotato">고구마마</label>
+            <br>
+            <input type="checkbox" name="topping" id="potato">
+            <label for="potato">감자</label>
+            <br>
+            <input type="checkbox" name="topping" id="pineapple">
+            <label for="pineapple">파인애플</label>
+        </fieldset>
+        <br>
+        <label for="time">희망 배송 시간 : </label>
+        <input type="time" id="time">
+        <br>
+        <br>
+        <button>주문하기</button>
+    </form>
 </body>
 </html>

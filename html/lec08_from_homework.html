@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form homework</title>
+</head>
+<body>
+    <h1>납품 대장</h1>
+    <form>
+        <fieldset>
+            <legend>납품자 정보</legend>
+            <label for="user_name">1. 납품자명 : </label>
+            <input type="text" placeholder="name" id="user_name" name="user_name">
+            <br>
+            <label for="user_email">2. email : </label>
+            <input type="email" placeholder="hkd@naver.com" id="user_email" name="user_email">
+        </fieldset>
+        <fieldset>
+            <legend>납품정보</legend>
+            <ul>
+                <li>
+                    <label for="product_name">상품명 : </label>
+                    <input type="text" id="product_name" name="product_name">
+                </li>
+                <li>
+                    <label for="product_name">납품수량 : </label>
+                    <input type="number" min="100" placeholder="최소 100" id="product_name" name="product_name">
+                </li>
+                <li>
+                    <label for="product_name">납품등급 : </label>
+                    <input type="range" id="product_name" name="product_name" size="3">
+                </li>
+                <li>
+                    <label for="product_name">기타사항 : </label>
+                    <textarea cols="20" rows="2"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <button>send message</button>
+    </form>
+    <br>
+    <h1>회원가입</h1>
+    <form>
+        <fieldset>
+            <legend>필수 입력 사항</legend>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td><input type="text" placeholder="아이디 10글자 이내" maxlength="10"></td>
+                    <td><button>중복 확인</button></td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td><input type="password" placeholder="영문, 숫자 포함 8자리 이상" minlength="8"></input></td>
+                </tr>
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td><input type="password" minlength="8"></input></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="email"></td>
+                    <td>
+                        <select>
+                            <option value="0" selected>직접입력</option>
+	                        <option value="1">naver.com</option>
+	                        <option value="2">gmail.com</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>추가 정보</legend>
+            <label for="user_profile">프로필 사진 : </label>
+            <input type="file" id="user_profile" accept=".png">
+            <br>
+            <br>
+            <label>성별 : </label>
+            <input type="radio" name="gender" id="M">
+            <label for="M">남자</label>
+            <input type="radio" name="gender" id="F">
+            <label for="F">여자</label>
+            <br>
+            <br>
+            <label for="birthday">생년월일 : </label>
+            <input type="date" id="birthday">
+            <br>
+            <br>
+            취미 <br>
+            <input type="checkbox" name="hobby" id="baseball">
+            <label for="baseball">야구</label>
+            <input type="checkbox" name="hobby" id="basketball">
+            <label for="baseball">농구</label>
+            <input type="checkbox" name="hobby" id="football">
+            <label for="baseball">축구</label>
+            <br>
+            <input type="checkbox" name="hobby" id="study">
+            <label for="baseball">공부</label>
+            <input type="checkbox" name="hobby" id="music">
+            <label for="baseball">음악감상</label>
+            <br>
+            <input type="checkbox" name="hobby" id="baseball">
+            <label for="baseball">기타 : </label>
+            <input type="text">
+            <br>
+            <br>
+            자기소개 <br>
+            <textarea cols="45" rows="5"></textarea>
+        </fieldset>
+        <br>
+        <button type="button">회원가입</button>
+        <button type="reset">다시입력</button>
+        <button type="button">이전으로</button>
+    </form>
+    <br>
+    <h1>백엔드 개발자 지원서</h1>
+    <p>
+        Java, Spring, DataBase에 대한 기술적 이해와 경험이 있는 분을 찾습니다.
+    </p>
+    <hr />
+    <p><b>개인정보</b></p>
+    <label for="지원자 이름"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;&nbsp;&nbsp;</label
+    >
+    <input
+        type="text"
+        id="지원자 이름"
+        placeholder="공백없이 입력하세요."
+    /><br />
+    <label for="지원자 연락처"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연락처</label
+    >
+    <input type="text" id="지원자 연락처" /><br /><br />
+    <p><b>지원 분야</b></p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="백엔드 개발" name="지원분야" />
+    <label for="백엔드 개발" name="지원분야"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;백엔드 개발</label
+    ><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="서버 개발" name="지원분야" />
+    <label for="서버 개발" name="지원분야"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서버 개발</label
+    ><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="개발 환경 개선" name="지원분야" />
+    <label for="개발 환경 개선" name="지원분야"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;개발 환경 개선</label
+    ><br /><br />
+    <p><b>지원동기</b></p>
+    <textarea
+        name=""
+        id=""
+        cols="40"
+        rows="5"
+        placeholder="지원 동기를 간략히 써주세요."
+    ></textarea
+    ><br />
+    <button type="submit">접수하기</button>
+    <button type="reset">다시쓰기</button>
+
+</body>
+</html>
