@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자</title>
+    <style>
+        div.container > h1 {background-color: aqua;}
+        div.container h1 {color: orange;}
+        .container a[href="lec01_basic.html"]{background-color: bisque;}
+        .container>div>ul>li>a{color: brown;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>첫째</h1>
+        <p>둘째</p>
+        <div>셋째
+            <h1>셋째의 첫째</h1>
+            <ul>
+                <li>
+                    셋째의 둘째의 첫째
+                </li>
+                <li>
+                    <a href="lec01_basic.html">셋째의 둘째의 둘째의 첫째</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
