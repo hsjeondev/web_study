@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex란?</title>
+</head>
+<body>
+    <style>
+        .container{
+            background-color: lightblue;
+            width: 600px;
+            height: 200px;
+            display: flex;
+        }
+        .container > * {
+            background-color: lightpink;
+            width: 100px;
+            height: 80px;
+            margin: 10px;
+        }
+    </style>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

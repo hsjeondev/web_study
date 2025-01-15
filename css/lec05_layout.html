@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lec05_layout.html</title>
+</head>
+<body>
+    <h1>가로,세로 설정</h1>
+    <style>
+        .container{
+            border : 1px solid crimson;
+        }
+        .absize{
+            width: 100px;
+            height: 100px;
+        }
+        .resize{
+            width : 30vw;
+            height: 50vh;
+        }
+    </style>
+    <div class="container absize">
+        절대크기
+    </div>
+    <div class="container resize">
+        상대크기
+    </div>
+    <h1>블록 vs 인라인</h1>
+    <style>
+        .container > img,
+        .container > span,
+        .container > h3{
+            border: 2px solid purple;
+            width: 200px;
+            height: 200px;
+        }
+        /* .container > span {display:block;} */
+        .container > h3 {display: inline;}
+    </style>
+    <div class="container">
+        <img src="../resources/sponge.png">
+        <span>inline 대표</span>
+    </div>
+    <div class="container">
+        <h3>block 대표</h3>
+        <h3>block 대표</h3>
+    </div>
+    <h1>display 프로퍼티</h1>
+    <img id="showImg" src="../resources/dung.png"
+    width="200" height="200" style="display: block;">
+    <button id="showBtn">있다없으니까</button>    
+    <script>
+        document.getElementById('showBtn').onclick = function() {
+            console.log(document.getElementById('showImg').style.display);
+            var ds = document.getElementById('showImg').style.display
+            if(ds == 'block') {
+                document.getElementById('showImg').style.display='none';
+            } else {
+                document.getElementById('showImg').style.display='block';
+            }
+        }
+    </script>
+    <h1>여백</h1>
+    <style>
+        .sub{
+            border: 2px solid blue;
+            padding: 30px 10px 50px 4px;
+            margin: 30px 20px 5px 40px;
+        }
+    </style>
+    <div class="container">
+        <div class="sub">
+            여기가 콘텐츠 입니다.
+        </div>
+        <span class="sub">inline 요소 대표</span>
+    </div>
+    <h1>CSS의 상속</h1>
+    <style>
+        .parent{
+            font-family: '궁서';
+            color: green;
+            padding: 30px;
+        }
+    </style>
+    <div class="parent">
+        <div class="child1">자식1</div>
+        <a class="child2" href="#">자식2</a>
+        <div class="child3">자식3</div>
+    </div>
+</body>
+</html>

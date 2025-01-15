@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lec08_back.html</title>
+</head>
+<body>
+    <h1>배경색</h1>
+    <style>
+        .container{
+            width: 400px; height: 400px;
+            border: 6px dashed crimson;
+        }
+        .bgcolor{
+            /* background-color: #4287F5; */
+            background-color: rgba(66, 135, 245, 0.4);
+        }
+    </style>
+    <div class="container bgcolor">
+        여기에 배경색 지정
+    </div>
+    <h1>배경 이미지</h1>
+    <style>
+        .bgimg{
+            background-image: url('../resources/sponge_list.png');
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            /* background-position: 25% 75%; */
+            background-attachment: fixed;
+        }
+    </style>
+    <div class="container bgimg">
+        배경에 이미지 넣기
+    </div>
+    <style>
+        .bgsize{
+            background-size: 50% 100%;
+        }
+    </style>
+    <div class="container bgsize" style="background-image: url('../resources/sponge.png');">
+        왕큰 스폰지밥
+    </div>
+    <h1>테두리</h1>
+    <style>
+        .border_parent > div{
+            width: 100px; height: 100px;
+        }
+    </style>
+    <div class="border_parent">
+                    <!-- border-style: dotted;
+                         border-width: 4px;
+                         border-color: blue; -->
+        <div style="border: 4px dotted blue;">
+            사방이 점선
+        </div>
+        <div style="border-top-style: double; 
+                    border-bottom-style: dotted;
+                    border-top-width: 5px;
+                    border-bottom-width: 2px;
+                    border-top-color: brown;
+                    border-top-color: gold;
+                    border-left: 3px solid crimson;">
+            위에는 이중선,
+            밑에는 점선선
+        </div>
+    </div>
+    <h1>모서리 둥글게</h1>
+    <style>
+        #targer{
+            width: 100px; height: 100px;
+            border: 3px solid teal;
+            /* border-radius: 150px; */
+            border-top-left-radius: 100px;
+        }
+    </style>
+    <img id="targer" src="../resources/dung.png">
+    <h1>테이블</h1>
+    <style>
+        table > caption{
+            caption-side: bottom;
+        }
+        table{
+            width: 800px; height: 400px;
+            border : 4px solid tomato;
+            border-collapse: collapse;
+        }
+        table td {
+            border : 4px solid tomato;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+    </style>
+    <table>
+        <caption>개인정보</caption>
+        <tbody>
+            <tr>
+                <td style="width: 100px;">1</td>
+                <td>
+                    <img id="targer" src="../resources/dung.png">
+                </td>
+                <td>뚱이</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><img id="targer" src="../resources/dung.png"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>asdfasdfasdfasdfasdf</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

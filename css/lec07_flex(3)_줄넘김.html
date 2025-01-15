@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>줄 넘김 설정</title>
+</head>
+<body>
+    <style>
+        .container{
+            background-color: lightblue;
+            width: 200px; height: 800px;
+            display: flex;
+        }
+        .item{
+            background-color: lightpink;
+            height: 80px; margin: 10px;
+        }
+    </style>
+    <h1>flex-wrap</h1>
+    <h2>nowrap</h2>
+    <div class="container" style="flex-wrap: nowrap;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+        <div class="item">40</div>
+        <div class="item">50</div>
+        <div class="item">60</div>
+    </div>
+    <h2>wrap</h2>
+    <div class="container" style="flex-wrap: wrap;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+        <div class="item">40</div>
+        <div class="item">50</div>
+        <div class="item">60</div>
+    </div>
+    <h2>wrap-reverse</h2>
+    <div class="container" style="flex-wrap: wrap-reverse;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+        <div class="item">40</div>
+        <div class="item">50</div>
+        <div class="item">60</div>
+    </div>
+</body>
+</html>

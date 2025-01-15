@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세로축 정렬</title>
+</head>
+<body>
+    <style>
+        .container{
+            background-color: lightblue;
+            width: 300px; height: 300px;
+            display: flex;
+            flex-direction: column;
+            /* 
+                flax-defection : row;
+                flax-warp : nowrap;
+                justify-content : flex-start;
+                align-items : stretch;
+            */
+        }
+        .item{
+            background-color: lightpink;
+            margin: 20px;
+        }
+    </style>
+    <h2>stretch</h2>
+    <div class="container" style="align-items: stretch;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+    </div>
+    <h2>flex-start</h2>
+    <div class="container" style="align-items: flex-start;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+    </div>
+    <h2>flex-end</h2>
+    <div class="container" style="align-items: flex-end;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+    </div>
+    
+    <h2>center</h2>
+    <div class="container" style="align-items: center;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+    </div>
+    
+    <h2>baseline</h2>
+    <div class="container" style="align-items: baseline;">
+        <div class="item">10</div>
+        <div class="item">20</div>
+        <div class="item">30</div>
+    </div>
+</body>
+</html>
