@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HTML 태그에 접근 테스트</h1>
+    <labe for="consumer">구매자 : </labe>
+    <input id="consumer" name="shop" type="text" placeholder="구매자 이름을 입력하세요">
+    <br><br>
+    <labe for="productName">상품명 : </labe>
+    <input id="productName" name="shop" type="text" placeholder="구매 상품명을 입력하세요">
+    <br><br>
+    <labe for="price">가격 : </labe>
+    <input id="price" name="shop" type="text" placeholder="가격을 입력하세요">
+    <br><br>
+    <button id="printBtn" onclick="printValue()">입력값 출력하기</button>
+    <br><br>
+    <div id="printBox" style="width: 300px; height: 200px; background-color: blanchedalmond;"></div>
+    <script>
+        function printValue() {
+            var elConsumer = document.getElementsByTagName('input');
+            var elPrice = document.getElementsByName('shop');
+
+            var consumer = elConsumer[0].value;
+            var productName = document.getElementById('productName').value;
+            var price = elPrice[2].value;
+
+            document.getElementById('printBox').innerHTML = "구매자 : " + consumer + "<br> 상품명 : " + productName + "<br> 가격 : " + price + "원";
+        }
+    </script>
+
+    <br>
+
+    <h1>input의 type 바꾸기</h1>
+    <from>
+        <fieldset>
+            <legend>사용자 정보</legend>
+            <label for="user_id">아이디 : </label>
+            <input id="user_id" type="text">
+            <br>
+            <label for="user_pwd">비밀번호 : </label>
+            <input id="user_pwd" type="password">
+            <button id="watchPwd" onclick="watchMyPwd()">보기</button>
+            <button id="hidePwd" onclick="hideMyPwd()">숨기기</button>
+            <script>
+                function watchMyPwd() {
+                    document.getElementById('user_pwd').type = 'text';
+                }
+                function hideMyPwd() {
+                    document.getElementById('user_pwd').type = 'password';
+                }
+            </script>
+        </fieldset>
+    </from>
+</body>
+</html>
