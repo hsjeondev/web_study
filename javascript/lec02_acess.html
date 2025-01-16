@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 접근</title>
+</head>
+<body>
+    <h2>id 기준 접근</h2>
+    <div id="idTarget">
+        변경전
+    </div>
+    <button type="button" onclick="turnRed()">
+        빨갛게
+    </button>
+    <script>
+        function turnRed() {
+           var it = document.getElementById('idTarget');
+           it.style.color = 'red';
+        }
+    </script>
+    <h2>class 기준 접근</h2>
+    <p class="a">p1</p>
+    <span class="b a">span1</span>
+    <p class="b">p2</p>
+    <input type="button" value="a만" onclick="changeOnlyA()">
+    <script>
+        function changeOnlyA() {
+            var el = document.getElementsByClassName('a');
+            console.log(el);
+            // 1. 인덱스
+            // el[0].style.color = 'hotpink';
+            // 2. 반복문
+            for(var i = 0; i < el.length; i++) {
+                if(i == 0) {
+                    el[i].style.color = 'red';
+                } else {
+                    el[i].style.color = 'green';
+                }
+            }
+        }
+    </script>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>ES6</li>
+    </ul>
+    <button type="button" onclick="changeJSBlue();">JS 좋아!</button>
+    <script>
+        function changeJSBlue() {
+            var tagEl = document.getElementsByTagName('li');
+            console.log(tagEl);
+            tagEl[2].style.color = 'blue';
+        }
+    </script>
+    <h2>name 속성 기준 접근</h2>
+    <label>
+        <input type="checkbox" name="food" value="1">
+        짜장면
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="food" value="2">
+        짬뽕
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="food" value="3">
+        군만두
+    </label>
+    <br>
+    <button type="button" onclick="addReview()">
+        리뷰 이벤트 참여
+    </button>
+    <script>
+        function addReview() {
+            var nameEl = document.getElementsByName('food');    
+            nameEl[2].checked = !nameEl[2].checked;
+        }
+    </script>
+    <h2>선택자 기준 접근</h2>
+    <button type="button" onclick="practiceQuery();">
+        접근하기
+    </button>
+    <script>
+        function practiceQuery() {
+            var one = document.querySelector('#idTarget');
+            one.style.color = 'orange';
+            var many = document.querySelectorAll('.b');
+            many[0].style.color = 'red';
+        }
+    </script>
+    <h2>value 속성 사용하기</h2>
+    <input type="text" id="userName" value="">
+    <input type="button" value="가져오기" id="getNameBtn">
+    <input type="button" value="바꿔주기" id="setNameBtn">
+    <script>
+        document.getElementById('getNameBtn').onclick
+        = function() {
+            var userName = document.getElementById('userName').value
+            alert(userName);
+        };
+        document.getElementById('setNameBtn').onclick
+        = function() {
+            document.getElementById('userName').value = '김철수';
+        }
+    </script>
+    <h2>style 속성 활용하기</h2>
+    <style>
+        #styleBtn{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <input id="styleBtn" type="button" value="스타일 변신" onclick="changeStyle();">
+    <script>
+        function changeStyle() {
+            var st1 = document.getElementById('styleBtn').style.backgroundColor;
+            console.log(st1);
+            // 인터널 방법으로 가져오는 법
+            var ele2 = document.getElementById('styleBtn');
+            var st2 = getComputedStyle(ele2).backgroundColor;
+            console.log(st2);
+
+            ele2.style.backgroundColor = 'gold';
+        }
+    </script>
+    <h1>실습 문제</h1>
+    <h2>문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어보세요.</h2>
+    <input type="color" id="chose_color">
+    <button onclick="changeColor()">변경</button>
+    <br><br>
+    <div id="colorBox" style="width: 100px; height: 100px; background-color: black;">
+    </div>
+    <script>
+        function changeColor() {
+            var color = document.getElementById('chose_color').value;
+            document.getElementById('colorBox').style.backgroundColor = color;
+        }
+    </script>
+    <br>
+    <h2>문제2. 버튼에 따른 크기 조절이 가능하도록 만들어 보시오.</h2>
+
+    <button onclick="sizeChange(50, 50)">50x50</button>
+    <button onclick="sizeChange(100, 100)">100x100</button>
+    <button onclick="sizeChange(200, 200)">200x200</button>
+    <br><br>
+    <div id="sizeBox" style="width: 100px; height: 100px; background-color: black;"></div>
+    <script>
+        function sizeChange(width, height) {
+            document.getElementById('sizeBox').style.width = width+'px';
+            document.getElementById('sizeBox').style.height = height+'px';
+        }
+    </script>
+    <h1>innerHTML</h1>
+    <div id="test1">
+        <p>Hello!</p>
+    </div>
+    <div id="test2">안녕하세요~</div>
+    <input type="button" value="가져오기" onclick="getTag();">
+    <input type="button" value="바꿔주기" onclick="setTag();">
+    <script>
+        function setTag() {
+            document.getElementById('test1').innerHTML += 'Lorem dolor sit amet';
+        }
+        function getTag() {
+            var t1 = document.getElementById('test1').innerHTML;
+            var t2 = document.getElementById('test2').innerHTML;
+            console.log(t1);
+            console.log(t2);
+        }
+    </script>
+</body>
+</html>
