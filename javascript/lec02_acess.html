@@ -160,13 +160,19 @@
     <input type="button" value="바꿔주기" onclick="setTag();">
     <script>
         function setTag() {
-            document.getElementById('test1').innerHTML += 'Lorem dolor sit amet';
+            // document.getElementById('test1').innerHTML = '<h1>하이요~</h1>';
+            document.getElementById('test1').innerText = '<h1>하이요~</h1>';
         }
         function getTag() {
-            var t1 = document.getElementById('test1').innerHTML;
-            var t2 = document.getElementById('test2').innerHTML;
-            console.log(t1);
-            console.log(t2);
+            // var t1 = document.getElementById('test1').innerHTML;
+            // var t2 = document.getElementById('test2').innerHTML;
+            // console.log(t1);
+            // console.log(t2);
+
+            var t3 = document.getElementById('test1').innerText;
+            var t4 = document.getElementById('test2').innerText;
+            console.log(t3);
+            console.log(t4);
         }
     </script>
 </body>

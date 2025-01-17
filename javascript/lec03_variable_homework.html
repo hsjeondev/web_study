@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 과제</title>
+</head>
+<body>
+    <h1>자라나라</h1>
+    <h2>자라나라 스폰지밥</h2>
+    <button id="growImgBtn" onclick="grow()">+</button>
+    <br>
+    <img id="growImg" src="../resources/sponge.png" width="100" height="100">
+    <script>
+        function grow() {
+            document.getElementById('growImg').width += 100;
+            document.getElementById('growImg').height += 100;
+        }
+    </script>
+    <hr>
+    <h1>크기 조정</h1>
+    <h2>이미지 크기 조정</h2>
+    <label for="widthLengths">가로 : </label>
+    <input id="widthLengths" type="text">
+    <br>
+    <label for="heightLengths">세로 : </label>
+    <input id="heightLengths" type="text">
+    <button id="changBtn" onclick="defGrow()">변경</button>
+    <br>
+    <img id="defGrowImg" src="../resources/dung.png" width="100" height="100">
+    <script>
+        function defGrow() {
+            let width = document.getElementById('widthLengths').value;
+            let height = document.getElementById('heightLengths').value;
+            document.getElementById('defGrowImg').width = width;
+            document.getElementById('defGrowImg').height = height;
+        }
+    </script>
+</body>
+</html>

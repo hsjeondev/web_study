@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="지역 변수 부르기" onclick="localFunc();">
+    <script>
+        // 1. 변수 선언
+        var test;
+        // 2. 변수 할당
+        test = 'JavaScript';
+        var test2 = 'JS';
+        // 3. 지역 vs 전역
+        function localFunc() {
+            var localVar = '나는 지역변수야~';
+            console.log(localVar);
+        }
+        // console.log(localVar);
+        console.log(globalVar);
+        var globalVar = 'I am global';
+        function globalTest() {
+            console.log(globalVar);
+        }
+        // console.log(globalVar);
+        for(var i = 0; i < 4; i++) {
+            console.log("안쪽!!" + i);
+        }
+        console.log("바깥쪽 ~" + i);
+    </script>
+    <input type="button" value="전역 변수 부르기" onclick="globalTest();">
+    <script>
+        // 4. let과 cosnt
+        if(true) {
+            let x = 20;
+            console.log(x);
+        }
+        // console.log(x);
+        // console.log(y);
+        let y = 30;
+
+        const pi = 3.14;
+        console.log(pi);
+    </script>
+    <input type="button" value="자료형 확인" onclick="checkType();">
+    <script>
+        function checkType() {
+            console.log(typeof(insa));
+            console.log(typeof(name));
+            console.log(typeof(age));
+            console.log(typeof(price));
+            console.log(typeof(isAdmin));
+            console.log(typeof(person));
+            console.log(typeof(add1));
+            console.log(typeof(sum));
+            
+        }
+        // 5. 자료형
+        let insa = "Hi";
+        let name = "김철수";
+        let age = 100;
+        let price = 19.99;
+        let isAdmin = false;
+        let person = {
+            name : '홍길동',
+            age : 30,
+            sayHi : function() {
+                console.log('안녕하세요~');
+            }
+        }
+        let add1 = function (x, y) {
+            return x + y;
+        }
+        let sum = add1(5,3);
+    </script>
+    <script>
+        // 6. falsy : 0, "", null, undifined, NaN
+        if(NaN) {
+            console.log('O');
+        } else {
+            console.log('X');
+        }
+    </script>
+    <h1>형변환</h1>
+    <input type="button" value="문자+숫자" onclick="strPlusNum()">
+    <script>
+        function strPlusNum() {
+            let num1 = 30;
+            let num2 = '30';
+            console.log(typeof(num1), typeof(num2));
+            if(num1 == num2) {
+                console.log("OOOOOOO"); // 출력됨
+            }
+            console.log(num1+num2); // 3030
+            console.log(num1*num2); // 900
+            console.log(num1*'test'); // NaN
+            console.log(num1-num2); // 0
+            console.log(num1/num2); // 1
+            console.log(num1%num2); // 0
+        }
+    </script>
+    <h1>강제 형변환</h1>
+    <label for="numInput">숫자</label>
+    <input type="number" id="numInput">
+    <input type="button" value="숫자->문자"
+    onclick="convertNumToStr();">
+    <script>
+        function convertNumToStr() {
+            let numVal = document.getElementById('numInput').value;
+            console.log(numVal, typeof(numVal));
+            // number 타입 value는 string이다!!
+            let numVal2 = Number(numVal);
+            console.log(typeof(numVal2));
+            let strVal = numVal2.toString();
+            console.log(typeof(strVal));
+        }
+    </script>
+    <h1>형변환 연습</h1>
+    <label for="firstNum">첫번째 수 : </label>
+    <input type="text" id="firstNum">
+    <br>
+    <label for="secondNum">두번째 수 : </label>
+    <input type="text" id="secondNum">
+    <input type="button" value="더하기" onclick="clickAlert()">
+    <script>
+        function clickAlert() {
+            var num1 = document.getElementById('firstNum').value
+            var num2 = document.getElementById('secondNum').value
+            console.log(typeof(num1), typeof(num2))
+            alert(Number(num1) + Number(num2));
+        }
+    </script>
+
+    
+</body>
+</html>
+<script>
+    document.getElementsByTagName('body')[0].innerHTML
+    += '<br>'.repeat(25); 
+</script>
+
