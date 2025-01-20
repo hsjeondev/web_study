@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 과제</title>
+</head>
+<body>
+    <h1>콤보세트</h1>
+    <h2>콤보세트</h2>
+    <label for="count">개수 : </label>
+    <input type="number" id="count">
+    <button onclick="makeSets();">생산</button>
+    <br><br>
+    <div id="resultDivs"></div>
+    <script>
+        function makeSets() {
+            let sets = Number(document.getElementById('count').value);
+            let imgsHTML = '';
+            for(let i = 0; i < sets; i++) {
+            imgsHTML += ' <img src="../resources/coke.png" width="50" height="50"> ';
+                for(let j = 0; j < 2; j++) {
+                    imgsHTML += ' <img src="../resources/popcorn.png" width="50" height="50"> ';
+                    // break;
+                }
+                imgsHTML += ' <br> '
+                // break;
+            }
+            document.getElementById('resultDivs').innerHTML = imgsHTML;
+        }
+    </script>
+    <hr>
+    <h1>테이블 만들기</h1>
+    <h2>행 열 갯수 각각 입력받아 테이블 만들기</h2>
+    <button onclick="makeTable();">테이블 생성</button>
+    <br><br>
+    <div id="tableResultDiv"></div>
+    <script>
+        function makeTable() {
+            let rows = prompt('테이블 행의 갯수는?');
+            let columns = prompt('테이블 열의 갯수는?');
+            let tableHTML = '<table border=1>';
+            let count = 1;
+            for(let i = 0; i < rows; i++) {
+                tableHTML += `<tr>`
+                for(let j = 0; j < columns; j++) {
+                    tableHTML += `<td>${count}</td>`
+                    count++;
+                }
+                tableHTML += `</tr>`
+            }
+            tableHTML += `</table>`
+            document.getElementById('tableResultDiv').innerHTML += tableHTML;
+        }
+    </script>
+    <hr>
+    <h1>철수의 귤농장</h1>
+    <style>
+        #farmDiv {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #farmItem {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100px;
+        }
+    </style>
+    <h2>귤농장</h2>
+    <button onclick="startMakeFarm();">체험시작</button>
+    <br><br>
+    <div id="area">
+        <div id="farmDiv"></div>
+    </div>
+    <script>
+        function startMakeFarm() {
+            for(let i = 10; i <= 200; i+=10) {
+                document.getElementById('farmDiv').innerHTML
+                += `<div id="farmItem">
+                        <label>귤 ${i}g</label>
+                        <img style="display: inline-block;" src="../resources/gul.png" width="100" height="100">
+                    </div>`;
+            }
+            document.getElementById('area').innerHTML
+            += '<h1>체험 종료!!</h1>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <h1 id="red" onclick="changRed();">빨강색</h1>
+    <h1 id="orange" onclick="changeColor('orange');">주황색</h1>
+    <h1 id="gold" onclick="changeEle(this);">노랑색</h1>
+    <script>
+        function changRed() {
+            document.getElementById('red').style.color = 'red';
+        }
+        function changeColor(colorCode) {
+            document.getElementById(colorCode).style.color = colorCode; // backgroundColor로 수정
+        }
+        function changeEle(ele) {
+            ele.style.color = ele.id;
+        }
+    </script>
+    <h1>매개변수</h1>
+    <input type="button" value="기본" onclick="printFruit('수박', 35000);">
+    <br>
+    <input type="button" value="순서 뒤집기" onclick="printFruit(15000, '딸기');">
+    <br>
+    <input type="button" value="작은" onclick="printFruit('참외');">
+    <br>
+    <input type="button" value="많은" onclick="printFruit('수박',19999,'초특가');">
+    <script>
+        function printFruit(name='수박', price=30000) {
+            if(typeof(name) == 'string' && typeof(price) == 'number') {
+                console.log(`과일 이름 : ${name}`);
+                console.log(`과일 가격 : ${price}`);
+            } else {
+                console.log('매개변수의 순서, 개수, 자료형을 지키세요.');
+            }
+        }
+    </script>
+    <h1>실습 문제</h1>
+    <h2>키오스크</h2>
+    <h4>창립 기념일 행사로 전상품 5%할인 됩니다.</h4>
+    <label for="defaultPrice">할인 전 : </label>
+    <input type="text" value="9400" readonly id="defaultPrice">
+    <br>
+    <input type="radio" name="discount" value="1" id="5perDiscount" onchange="discount();">
+    <label for="5perDiscount">기본할인(5%)</label>
+    <br>
+    <input type="radio" name="discount" value="2" id="10perDiscount" onchange="discount(10);">
+    <label for="5perDiscount">기본할인(10%)</label>
+    <br>
+    <input type="text" readonly id="resultPrice">
+    <script>
+        function discount(persent=5) {
+            const defaultPrice = document.getElementById('defaultPrice').value;
+            document.getElementById('resultPrice').value = defaultPrice - defaultPrice * (persent/100);
+
+        }
+    </script>
+</body>
+</html>

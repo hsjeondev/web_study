@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 과제</title>
+</head>
+<body>
+    <h1>날씨 확인</h1>
+    <h2>날씨 확인</h2>
+    계절
+    <input type="radio" value="1" name="season" checked id="spring">
+    <label for="spring">봄</label>
+    <input type="radio" value="2"  name="season" id="summer">
+    <label for="summer">여름</label>
+    <input type="radio" value="3"  name="season" id="fall">
+    <label for="fall">가을</label>
+    <input type="radio" value="4"  name="season" id="winter">
+    <label for="winter">겨울</label>
+    <br>
+    <label for="temperature">기온</label>
+    <input type="text" id="temperature">
+    <br>
+    <input type="button" value="확인" onclick="selectTemper();">
+    <script>
+        function selectTemper() {
+            let seasons = document.getElementsByName('season');
+            let whatSeasonValue = '';
+            let whatSeasonText = '';
+            let temperature = document.getElementById('temperature').value;
+            for(let i = 0; i < seasons.length; i++) {
+                if(seasons[i].checked) {
+                    whatSeasonValue = Number(seasons[i].value);
+                }
+            }
+
+            switch(whatSeasonValue) {
+                case 1 : whatSeasonText = '봄'; break;
+                case 2 : whatSeasonText = '여름'; break;
+                case 3 : whatSeasonText = '가을'; break;
+                case 4 : whatSeasonText = '겨울'; break;
+            }
+
+            if(whatSeasonValue == 2 && temperature >= 35) {
+                alert(`계절 : ${whatSeasonText}, 기온 : ${temperature}도, 폭염 경보`);
+            } else if(whatSeasonValue == 2 && temperature >= 33){
+                alert(`계절 : ${whatSeasonText}, 기온 : ${temperature}도, 폭염 주의보`);
+            } else if(whatSeasonValue == 4 && temperature <= -15) {
+                alert(`계절 : ${whatSeasonText}, 기온 : ${temperature}도, 한파 경보`);
+            } else if(whatSeasonValue == 4 && temperature <= -12) {
+                alert(`계절 : ${whatSeasonText}, 기온 : ${temperature}도, 한파 주의보`);
+            } else {
+                alert(`계절 : ${whatSeasonText}, 기온 : ${temperature}도`);
+            }
+        }
+    </script>
+    <hr>
+    <h1>스폰지밥, 뚱이, 징징이</h1>
+    <style>
+        #showSelectImg {
+            border-radius: 100%;
+            border: 2px solid green;
+        }
+    </style>
+    <h2>스폰지밥, 뚱이, 징징이</h2>
+    <select onchange="changeImg();" id="selectImg">
+        <option value="1">스폰지밥</option>
+        <option value="2">뚱이</option>
+        <option value="3">징징이</option>
+    </select>
+    <img id="showSelectImg" src="../resources/sponge.png" width="200px" height="200px"></img>
+    <script>
+        function changeImg() {
+            let imgElements = document.getElementById('selectImg');
+            let imgValue = Number(imgElements.options[imgElements.selectedIndex].value);
+            let showImg = '';
+            
+            switch(imgValue) {
+                case 1 : showImg = '../resources/sponge.png'; break;
+                case 2 : showImg = '../resources/dung.png'; break;
+                case 3 : showImg = '../resources/human.png'; break;
+            }
+            document.getElementById('showSelectImg').src = showImg;
+        }
+    </script>
+</body>
+</html>
