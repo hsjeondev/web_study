@@ -58,5 +58,110 @@
 
         }
     </script>
+    <h1>가변인자 함수</h1>
+    <input type="button" value="실행확인" onclick="sumNum(1,2,3,4);">
+    <script>
+        function sumNum() {
+            // console.log(arguments[0]);
+            let result = 0;
+            for(let i = 0; i < arguments.length; i++) {
+                result += arguments[i];
+            }
+            console.log(result);        
+        }
+    </script>
+    <h1>반환값</h1>
+    <button onclick="alert(calcDay())">오늘 날짜</button>
+    <script>
+        function calcDay() {
+            const date = new Date();
+            const year = date.getFullYear();
+            return `오늘은 ${year}년 입니다.`;
+        }
+    </script>
+    <hr>
+    <h1>선언적 함수</h1>
+    <button onclick="basicFunc();">테스트</button>
+    <script>
+        function basicFunc() {
+            alert("선언(1)");
+        }
+        
+        function basicFunc() {
+            alert("선언(2)");
+        }
+    </script>
+    <hr>
+    <h1>익명함수</h1>
+    <button onclick="annonyFunc();">익명 테스트</button>
+    <script>
+        let annonyFunc = function() {
+            alert('익명함수~');
+        }
+        // let annonyFunc = function() {
+            
+        // }
+    </script>
+    <hr>
+    <h1>화살표 함수</h1>
+    <script>
+        // 1. 매개변수 X
+        const arrow1 = () => {
+            console.log("화살표 함수 1번");
+            return 1+2;
+        }
+        // 2. 매개변수 O
+        const arrow2 = (num1, num2) => {
+            console.log(num1+num2);
+            return num1+num2;
+        }
+        // 3. 반환값이 간단할때(1줄)
+        const arrow3 = (str, s) => str.indexOf(s);
+        // 4. 매개변수가 하나일때
+        const arrow4 = str => str.length;
+    </script>
+    <h1>실습 문제</h1>
+    <button onclick="basic(11,41);">선언적 함수</button>
+    <button onclick="annony(11,41);">익명 함수</button>
+    <button onclick="arrow(11,41);">화살표 함수</button>
+    <script>
+        function basic(a, b) {
+            console.log(a*b);
+        }
+        let annony = function(a,b) {
+            console.log(a*b);
+        }
+        let arrow = (a,b) => console.log(a*b);
+    </script>
+    <hr>
+    <h1>익명 함수 활용</h1>
+    <button onclick="timerFunc()">1초 뒤에 동작</button>
+    <script>
+        let timerFunc = function() {
+            // setTimeout(기능, 시간);
+            setTimeout(function(){
+                console.log('1초 지났어요~');
+            },1000);
+        }
+    </script>
+    <button onclick="returnFunc('바깥쪽')('테스트');">반환값 테스트</button>
+    <script>
+        const returnFunc = function(str) {
+
+            const innerFunc = msg => {
+                console.log(str+":"+msg);
+            }
+            return innerFunc;
+        }
+    </script>
+    <div id="instant_div">
+        즉시 실행 함수 테스트
+    </div>
+    <script>
+        (function(){
+            document.getElementById('instant_div').innerHTML 
+            = '<h1>확인</h1>';
+        })();
+    </script>
 </body>
 </html>

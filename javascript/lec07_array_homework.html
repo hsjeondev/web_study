@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 과제</title>
+</head>
+<body>
+    <h1>성적 평균 계산기</h1>
+    <h2>우리반 성적</h2>
+    평균 : <span id="avgSpan"></span>
+    <br><br>
+    성적
+    <input id="inputGrade" type="number">
+    <button onclick="pushGrade();">추가</button>
+    <script>
+        let avgArr = new Array();
+        let pushGrade = () => {
+            avgArr.push(document.getElementById('inputGrade').value);
+            document.getElementById('inputGrade').value = '';
+            let sum = 0;
+            for(grade of avgArr) {
+                sum += Number(grade);
+            }
+            document.getElementById('avgSpan').innerText = sum/avgArr.length;
+        }
+    </script>
+    <hr>
+    <h1>water melon</h1>
+    <h2>1번. 배열 실습 문제</h2>
+    <form>
+        <fieldset>
+            <legend>보기</legend>
+            <label id="firstStr">n o l e m</label>
+            <br>
+            <label id="secondStr">r e t a w</label>
+        </fieldset>
+    </form>
+    <br>
+    <div id="printWatermelon" style="width: 100%; height: 25px; border: 1px solid crimson;">
+        이 부분에 정답이 출력 될 수 있도록 하세요.
+    </div>
+    <br>
+    <button onclick="makeWord();">처리</button>
+    <script>
+        let makeWord = () => {
+            let defaultWord = ['w', 'a', 't', 'e', 'r', 'm', 'e', 'l', 'o', 'n'];
+            let printWord = '';
+            let str1 = document.getElementById('firstStr').innerText;
+            let str2 = document.getElementById('secondStr').innerText;
+            let arr1 = str1.split(' ');
+            let arr2 = str2.split(' ');
+
+            let arr3 = arr1.concat(arr2);
+            arr3.reverse();
+            for(a of arr3) {
+                let idx = defaultWord.indexOf(a);
+                printWord += defaultWord[idx];
+            }
+            document.getElementById('printWatermelon').innerText = printWord;
+        }
+    </script>
+    <hr>
+    <h1>개구리, 바나나, 복숭아</h1>
+    <h2>3.배열 실습 문제</h2>
+    <form>
+        <fieldset>
+            <legend>입력</legend>
+            <input id="addTextInput" type="text">
+            <button type="button" onclick="addTextFunc();">입력</button>
+        </fieldset>
+        <div id="printTextDiv">이 부분에 정답이 출력 될 수 있도록 하세요</div>
+        <br>
+        <button type="button" onclick="printTextFunc();">출력</button>
+    </form>
+    <script>
+        let textArr = new Array();
+        let addTextFunc = () => {
+            textArr.push(document.getElementById('addTextInput').value);
+            document.getElementById('addTextInput').value = '';
+        }
+        let printTextFunc = () => {
+            let joinArr = textArr.join(', ');
+            document.getElementById('printTextDiv').innerText = joinArr;
+        }
+    </script>
+    <hr>
+    <h1>당근 시렁</h1>
+    <h2>3.배열 실습 문제</h2>
+    <form>
+        <fieldset>
+            <legend>보기</legend>
+            <span id="food">피자 치킨 당근 햄버거 떡볶이</span>
+        </fieldset>
+        <input id="deleteFoodInput" type="text" placeholder="삭제할 음식이름을 입력하세요" style="width: 200px;">
+        <input id="addFoodInput" type="text" placeholder="추가할 음식이름을 입력하세요" style="width: 200px;">
+        <br><br>
+        <div id="printFoods" style="width: 100%; height: 25px; border: 1px solid crimson;">
+            이 부분에 정답이 출력 될 수 있도록 하세요.
+        </div>
+        <br>
+        <button onclick="foodAction();" type="button">처리 및 출력</button>
+    </form>
+    <script>
+        let foodArr = new Array();
+        let foodAction = () => {
+            foodArr = document.getElementById('food').innerText.split(' ');
+            let deleteFood = document.getElementById('deleteFoodInput').value;
+            let addFood = document.getElementById('addFoodInput').value;
+            foodArr.splice(foodArr.indexOf(deleteFood), 1);
+            foodArr.push(addFood);
+            document.getElementById('printFoods').innerText = foodArr.join(' ');
+        }
+    </script>
+</body>
+</html>
