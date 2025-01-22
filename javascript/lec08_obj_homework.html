@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 과제</title>
+</head>
+<body>
+    <h1>출석부</h1>
+    <h2>출석부</h2>
+    <form>
+        <fieldset>
+            <legend>강아지 정보</legend>
+            <label for="pet_name">이름</label>
+            <input id="pet_name" type="text">
+            <br>
+            <label for="pet_age">나이</label>
+            <input id="pet_age" type="number">
+            <br>
+            <label for="pet_character">특징</label>
+            <input id="pet_character" type="text">
+        </fieldset>
+    </form>
+    <br>
+    <button onclick="addPet();">등록</button>
+    <button onclick="printPets();">확인</button>
+    <br><br>
+    <table id="petsTable" border="1">
+        <tr style="background-color: rgb(224, 224, 224);">
+            <th>이름</th>
+            <th>나이</th>
+            <th>특징</th>
+        </tr>
+    </table>
+    <script>
+        let pets = [];
+        let petObj = function(petName, petAge, petCharacter) {
+                return {petName : petName,
+                        petAge : petAge,
+                        petCharacter : petCharacter
+                    };
+            }
+        let addPet = function() {
+            let petName = document.getElementById('pet_name').value;
+            let petAge = document.getElementById('pet_age').value;
+            let petCharacter = document.getElementById('pet_character').value;
+            
+            pets.push(petObj(petName, petAge, petCharacter));
+            document.getElementById('pet_name').value = '';
+            document.getElementById('pet_age').value = '';
+            document.getElementById('pet_character').value = '';
+        }
+        let printPets = function() {
+            document.getElementById('petsTable').innerHTML
+            = '<tr style="background-color: rgb(224, 224, 224);">'
+            +'<th>이름</th>'
+            +'<th>나이</th>'
+            +'<th>특징</th>'
+            +'</tr>';
+            for(let i = 0; i< pets.length; i++) {
+                document.getElementById('petsTable').innerHTML
+            += `<tr>
+                    <td>${pets[i].petName}</td>
+                    <td>${pets[i].petAge}</td>
+                    <td>${pets[i].petCharacter}</td>
+                </tr>`;
+            }
+        }
+    </script>
+    <hr>
+    <h1>학생 정보</h1>
+    <div id="studentsDiv">
+        <table id="studentInfo" border="1">
+            <caption style="color: crimson; caption-side: bottom;">학생정보 테이블</caption>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </table>
+    </div>
+    <button onclick="inputAndPrint();">입력 및 출력</button>
+    <script>
+        let inputAndPrint = () => {
+            let studentArr = [];
+            for(let i = 0; i < 3; i++) {
+                let studentObj = {};
+                studentObj.name = prompt('이름을 입력하세요.');
+                studentObj.age = prompt(`${studentObj.name}의 나이를 입력하세요.`);
+                studentObj.address = prompt(`${studentObj.name}의 주소를 입력하세요..`);
+                studentArr.push(studentObj);
+            }
+            let studentInfoHTML = '';
+            for(let student of studentArr) {
+                studentInfoHTML += `<tr>`;
+                studentInfoHTML += `<td>${student.name}</td>`;
+                studentInfoHTML += `<td>${student.age}</td>`;
+                studentInfoHTML += `<td>${student.address}</td>`;
+                studentInfoHTML += `</tr>`;
+            }
+            document.getElementById('studentInfo').innerHTML += studentInfoHTML;
+        }
+    </script>
+    <h1>표로 검색하기</h1>
+    <h2>검색이 가능한 표</h2>
+    <style>
+        table th,td{
+            border: 1px solid black; 
+            border-collapse: separate; 
+            text-align: center;
+        }
+    </style>
+    <button onclick="printAll();">전체 데이터출력</button>
+    <button onclick="printTwenty();">20대 출력</button>
+    <input id="addressWord" type="text" placeholder="주소를 입력하세요">
+    <button onclick="searchCurrentAddr();">주소 검색</button>
+    <br><br>
+    <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>성별</th>
+                    <th>주소</th>
+                </tr>
+            </thead>
+            <tbody id="resultTbody">
+            </tbody>
+    </table>
+    <script>
+        let people = [
+                    { name: '박영희', age: 32, gender: '여', address: '서울' },
+                    { name: '정우성', age: 47, gender: '남', address: '대전' },
+                    { name: '김철수', age: 26, gender: '남', address: '부산' },
+                    { name: '배수지', age: 24, gender: '여', address: '울산' },
+                    { name: '강동원', age: 39, gender: '남', address: '서울' },
+                    { name: '한지민', age: 33, gender: '여', address: '청주' },
+                    { name: '송혜교', age: 43, gender: '여', address: '부산' },
+                    { name: '김철수', age: 45, gender: '남', address: '광주' },
+                    { name: '최지우', age: 36, gender: '여', address: '서울' },
+                    { name: '이민호', age: 34, gender: '남', address: '대구' },
+                    { name: '정우성', age: 42, gender: '남', address: '수원' },
+                    { name: '강동원', age: 40, gender: '남', address: '서울' },
+                    { name: '박영희', age: 23, gender: '여', address: '대전' },
+                    { name: '배수지', age: 28, gender: '여', address: '대구' },
+                    { name: '이민호', age: 30, gender: '남', address: '창원' },
+                    { name: '강동원', age: 31, gender: '남', address: '부산' },
+                    { name: '정우성', age: 39, gender: '남', address: '광주' },
+                    { name: '한지민', age: 28, gender: '여', address: '서울' },
+                    { name: '최지우', age: 42, gender: '여', address: '울산' },
+                    { name: '송혜교', age: 37, gender: '여', address: '서울' },
+                    { name: '배수지', age: 35, gender: '여', address: '수원' },
+                    { name: '박영희', age: 27, gender: '여', address: '창원' },
+                    { name: '김철수', age: 44, gender: '남', address: '대구' },
+                    { name: '정우성', age: 41, gender: '남', address: '부산' },
+                    { name: '이민호', age: 23, gender: '남', address: '서울' },
+                    { name: '강동원', age: 38, gender: '남', address: '울산' },
+                    { name: '송혜교', age: 30, gender: '여', address: '청주' },
+                    { name: '한지민', age: 34, gender: '여', address: '서울' },
+                    { name: '배수지', age: 27, gender: '여', address: '대전' },
+                    { name: '김철수', age: 36, gender: '남', address: '광주' }
+                    ];
+        let printAll = () => {
+            document.getElementById('resultTbody').innerHTML = '';
+            let allPeopleHTML = '';
+            for(let i = 0; i < people.length; i++) {
+                allPeopleHTML += '<tr>';
+                allPeopleHTML += `<td>${people[i].name}</td>`;
+                allPeopleHTML += `<td>${people[i].age}</td>`;
+                allPeopleHTML += `<td>${people[i].gender}</td>`;
+                allPeopleHTML += `<td>${people[i].address}</td>`;
+                allPeopleHTML += '</tr>';
+            }
+            document.getElementById('resultTbody').innerHTML = allPeopleHTML;
+        }
+        let printTwenty = () => {
+            document.getElementById('resultTbody').innerHTML = '';
+            let twenties = [];
+            for(let two of people) {
+                if(two.age >= 20 && two.age <= 29) {
+                    twenties.push(two);
+                }
+            }
+            let allPeopleHTML = '';
+            for(let i = 0; i < twenties.length; i++) {
+                allPeopleHTML += '<tr>';
+                allPeopleHTML += `<td>${twenties[i].name}</td>`;
+                allPeopleHTML += `<td>${twenties[i].age}</td>`;
+                allPeopleHTML += `<td>${twenties[i].gender}</td>`;
+                allPeopleHTML += `<td>${twenties[i].address}</td>`;
+                allPeopleHTML += '</tr>';
+            }
+            document.getElementById('resultTbody').innerHTML = allPeopleHTML;
+        }
+        let searchCurrentAddr = () => {
+            document.getElementById('resultTbody').innerHTML = '';
+            let searchAddrWord = document.getElementById('addressWord').value;
+            let currentAddr = [];
+            for(let addr of people) {
+                if(addr.address.includes(searchAddrWord)) {
+                    currentAddr.push(addr);
+                }
+            }
+            let allPeopleHTML = '';
+            for(let i = 0; i < currentAddr.length; i++) {
+                allPeopleHTML += '<tr>';
+                allPeopleHTML += `<td>${currentAddr[i].name}</td>`;
+                allPeopleHTML += `<td>${currentAddr[i].age}</td>`;
+                allPeopleHTML += `<td>${currentAddr[i].gender}</td>`;
+                allPeopleHTML += `<td>${currentAddr[i].address}</td>`;
+                allPeopleHTML += '</tr>';
+            }
+            document.getElementById('resultTbody').innerHTML = allPeopleHTML;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체 과제</title>
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+    <h1>랜덤값 출력</h1>
+    <h2>내맘대로 랜덤</h2>
+    <label for="startNum">시작</label>
+    <input id="startNum" type="number">
+    <br>
+    <label for="endNum">종료</label>
+    <input id="endNum" type="number">
+    <button onclick="makeRandom();">실행</button>
+    <script>
+        let makeRandom = () => {
+            let startNum = document.getElementById('startNum').value;
+            let endNum = document.getElementById('endNum').value;
+            alert(Math.floor(Math.random() * (Number(endNum) - Number(startNum) + 1) + Number(startNum)));
+        }
+    </script>
+    <hr>
+    <h1>Math 객체 연습</h1>
+    <p>Floor: <span id="floor">7.8</span></p>
+    <p>Round: <span id="round">5.5</span></p>
+    <p>Ceil: <span id="ceil">3.2</span></p>
+    <p>Abs: <span id="abs">-15</span></p>
+    <p>Pow: <span id="pow">3^4</span></p>
+    <button onclick="applyMathFunctions();">Math 함수 적용</button>
+    <script src="../resources/basic.js"></script>
+    <hr>
+    <h1>로또</h1>
+    <h2>로또 번호 출력하기</h2>
+    <button onclick="makeLotto()">로또</button>
+    <div id="lottoNumbers"></div>
+    <script>
+        let makeLotto = () => {
+            document.getElementById('lottoNumbers').innerText = '';
+            let nums = [];
+            while(nums.length < 6) {
+                let randomNum = Math.floor(Math.random() * (45-1+1)) + 1;
+                if(nums.includes(randomNum)) {
+                    continue;
+                } else {
+                    console.log(typeof(randomNum));
+                    nums.push(randomNum);
+                }
+            }
+            nums.sort((a, b) => a - b);
+            for(let num of nums) {
+                document.getElementById('lottoNumbers').innerText
+                += num+'\n';
+            }
+        }
+    </script>
+    <hr>
+    <h1>랜덤 배경색</h1>
+    <button onclick="changeBgColor();">바꾸기</button>
+    <script>
+        let changeBgColor = () => {
+            let red = Math.floor(Math.random()*(255-0+1)) + 0;
+            let green = Math.floor(Math.random()*(255-0+1)) + 0;
+            let blue = Math.floor(Math.random()*(255-0+1)) + 0;
+            document.getElementsByTagName('body')[0].style.backgroundColor = `rgb(${red},${green},${blue})`
+        }
+    </script>
+</body>
+</html>
