@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 과제</title>
+</head>
+<body>
+    <h1>전자시계</h1>
+    <h3 id="show_date">2024-6-24</h3>
+    <h1 id="show_time"></h1>
+    <script>
+        let calDate = () => {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let date = today.getDate();
+            let hour = today.getHours();
+            let minutes = today.getMinutes();
+            let seconds = today.getSeconds();
+            let nowDate = [];
+            nowDate.push(year);
+            nowDate.push(month);
+            nowDate.push(date);
+            let nowTime = [];
+            nowTime.push(hour);
+            nowTime.push(minutes);
+            nowTime.push(seconds);
+            let nowDateStr = nowDate.join('-');
+            let nowTimeStr = nowTime.join(' : ');
+            document.getElementById('show_date').innerHTML = nowDateStr;
+            document.getElementById('show_time').innerHTML = nowTimeStr;
+        }
+
+        calDate();
+        setInterval(function() {
+            calDate();
+        }, 1000)
+        
+    </script>
+    <hr>
+    <h1>행추가</h1>
+    <input id="table_count" type="text">
+    <button onclick="makeTable();">출력</button>
+    <div id="result_div"></div>
+    <script>
+        let tableExist = false;
+        let makeTable = function() {
+            if(!tableExist) {
+                let count = document.getElementById('table_count').value;
+                let table = document.createElement('table');
+                for(let i = 0; i < count; i++) {
+                    let tr = document.createElement('tr');
+                    for(let j = 0; j < 4; j++) {
+                        let td = document.createElement('td');
+                        let tdText = document.createTextNode(j+1+i*4);
+                        td.appendChild(tdText);
+                        tr.appendChild(td);
+                    }
+                    table.appendChild(tr);
+                }
+                document.getElementById('result_div').appendChild(table);
+                tableExist = true;
+            } else {
+                let tdCount = document.getElementById('table_count').value;
+                let tds = document.querySelectorAll('table td');
+                let lastTd = Number(tds[tds.length-1].innerText);
+                let tr;
+                for(let i = 0; i < tdCount; i++) {
+                    tr = document.createElement('tr');
+                    for(let j = 0; j < 4; j++) {
+                        let td = document.createElement('td');
+                        let tdText = document.createTextNode(++lastTd);
+                        td.appendChild(tdText);
+                        tr.appendChild(td);
+                    }
+                    document.querySelector('table').insertAdjacentElement('beforeend',tr);
+                }
+            }
+        }
+    </script>
+    <hr>
+    <button onclick="makeWindow();">창 만들기</button>
+    <button onclick="autoChange();">자동 변경하기</button>
+    <button onclick="stopWindow();">멈추기</button>
+    <script>
+        let userWindow;
+        let interWindow;
+        let makeWindow = () => {
+            userWindow = window.open('', '_blank', 'width=300,height=300');
+            userWindow.document.write(`<img src="../resources/sponge.png" width=150; height=150;>`);
+        }
+        let autoChange = () => {
+            
+            interWindow = setInterval(function() {
+                let x1 = Math.round(Math.random() * 900) + 1;
+                let y1 = Math.round(Math.random() * 900) + 1;
+                userWindow.resizeTo(x1,y1);
+                let x2 = Math.round(Math.random() * 900) + 1;
+                let y2 = Math.round(Math.random() * 900) + 1;
+                userWindow.moveTo(x2,y2);
+            }, 1000)
+        }
+        let stopWindow = () => {
+            clearInterval(interWindow);
+            setTimeout(function() {
+                userWindow.close();
+            },2000);
+        }
+    </script>
+</body>
+</html>
