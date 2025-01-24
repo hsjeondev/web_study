@@ -332,14 +332,100 @@
             let dishText = document.createTextNode(userDish);
             dishLi.appendChild(dishText);
             document.getElementById('showMenus').appendChild(dishLi);
+            document.getElementById('inputMenu').value = '';
         }
         let moveMenuFunc = function() {
             let ulList = document.getElementById('showMenus');
             let lastLi = ulList.lastElementChild;
             ulList.insertAdjacentElement('afterbegin', lastLi);
         }
+    </script>
+    <h1>클래스 속성 추가 및 삭제</h1>
+    <style>
+        .colorful{
+            border: 3px double deepskyblue;
+            background-color: aliceblue;
+        }
+    </style>
+    <p id="standard">기준 p태그</p>
+    <button onclick="addClassTest();">colorful 클래스 추가</button>
+    <br>
+    <button onclick="removeClassTest();">colorful 클래스 삭제</button>
+    <script>
+        const addClassTest = function() {
+            document.getElementById('standard').classList.add('colorful');
+        }
+        const removeClassTest = function () {
+            document.getElementById('standard').classList.remove('colorful');
+        }
+    </script>
+    <h1 id="changeCss">실습 문제</h1>
+    <style>
+        .highlight{
+            color: green;
+            background-color: yellow;
+        }
+    </style>
+    <button onclick="addHighlight();">추가</button>
+    <button onclick="removeHighlight();">제거</button>
+    <script>
+        let addHighlight = () => {
+            document.getElementById('changeCss').classList.add('highlight');
+        }
+        let removeHighlight = () => {
+            document.getElementById('changeCss').classList.remove('highlight');
+        }
+    </script>
+    <h1>주변 태그 접근</h1>
+    <div id="searchTag">
+        <h2>얘는 h2에요~</h2>
+        <ul>
+            <li>가</li>
+            <li>나</li>
+            <li>다</li>
+        </ul>
+        <button id="search_btn">주변 조회</button>
+        <button id="remove_btn">태그 제거</button>
+    </div>
+    <script>
+        let trueOrFalse = true;
+        document.getElementById('search_btn').onclick = function () {
+            const tar = this;
+            const parent = tar.parentElement;
+            console.log(tar, parent);
+            const children = parent.children;
+            console.log(children);
 
-        
+            const arr = this.parentElement.children;
+            console.log(arr);
+            for(let i = 0; i < arr.length; i++) {
+                console.log(i+ " : " +arr[i].tagName);
+                if(arr[i].tagName == 'H2') {
+                    arr[i].style.backgroundColor = 'gold';
+                } else if(arr[i].tagName = 'UL') {
+                    const li = arr[i].children;
+                    console.log(li);
+                }
+            }
+
+            const firstLi = this.parentElement.children[1].children[0];
+            console.log(firstLi);
+            const secondLi = firstLi.nextElementSibling;
+            console.log(secondLi);
+
+            const ulTarget = document.getElementById('searchTag').children[1].previousElementSibling;
+            console.log(ulTarget);
+        }
+
+        document.getElementById('remove_btn').onclick = function() {
+            if(trueOrFalse == true) {
+                let deleteElement = this.parentElement.children[1];
+            //    deleteElement = this.previousElementSibling.previousElementSibling;
+            deleteElement.remove();
+            trueOrFalse = false;
+            }
+            
+        }
     </script>
 </body>
 </html>

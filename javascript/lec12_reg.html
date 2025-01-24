@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식</title>
+</head>
+<body>
+    <h1>선언</h1>
+    <button onclick="useRegex();">결과 확인</button>
+    <div id="result_div">
+
+    </div>
+    <script>
+        const useRegex = function() {
+            // 1. 선언
+            let regExp1 = /script/;
+                regExp1 = new RegExp(/script/);
+            // 2. 확인 : RegExp();
+            const str1 = "javascript jquery ajax";
+            const ele = document.getElementById('result_div');
+            ele.innerHTML += `1 : ${regExp1.test(str1)}<br>`;
+            ele.innerHTML += `2 : ${regExp1.exec(str1)}<br>`;
+
+            ele.innerHTML += `3 : ${str1.match(regExp1)}<br>`;
+            ele.innerHTML += `4 : ${str1.search(regExp1)}<br>`;
+            ele.innerHTML += `5 : ${str1.replace(regExp1, '스파게티')}<br>`;
+            ele.innerHTML += `6 : ${str1.split(regExp1)}<br>`;
+        }
+    </script>
+    <h1>메타문자</h1>
+    <button onclick="metaTest();">메타문자 써보기</button>
+    <div id="meta_div">
+
+    </div>
+    <script>
+        const metaTest = function() {
+            const str = "javascript jquery ajax";
+            const ele = document.getElementById('meta_div');
+            // 1. 메타문자(X)
+            let reg = /a/;
+            ele.innerHTML += `1 : ${str.replace(reg, '(*)')}<br>`;
+            // 2. ^ : 시작
+            reg = /^a/;
+            ele.innerHTML += `2 : ${str.replace(reg, '(*)')}<br>`;
+            // 3. [] : 하나라도 포함
+            reg = /[abc]/;
+            ele.innerHTML += `3 : ${str.replace(reg, '(*)')}<br>`;
+            // 4. $ : 끝
+            reg = /t$/;
+            ele.innerHTML += `4 : ${str.replace(reg, '(*)')}<br>`;
+        }
+    </script>
+    <h1>플래그 문자</h1>
+    <button onclick="flagTest();">플래그 문자 확인</button>
+    <div id="flag_div">
+
+    </div>
+    <script>
+        const flagTest = function() {
+            let str = "JavaScript jQuery AJAX";
+            const ele = document.getElementById('flag_div');
+            // 1. 메타문자(X)
+            let reg = /a/;
+            ele.innerHTML += `1 : ${str.replace(reg, '(*)')}<br>`;
+            // 2. global
+            reg = /a/g;
+            ele.innerHTML += `2 : ${str.replace(reg, '(*)')}<br>`;
+            // 3. i
+            reg = /a/ig;
+            ele.innerHTML += `3 : ${str.replace(reg, '(*)')}<br>`;
+            // 4. m
+            str = 'JavaScript\njQuery\nAJAX';
+            ele.innerHTML += `4 : ${str.replace(reg, '(*)')}<br>`;
+            reg = /a/gmi;
+            ele.innerHTML += `5 : ${str.replace(reg, '(*)')}<br>`;
+
+        }
+    </script>
+    <h1>수량지정패턴</h1>
+    <button onclick="numTest();">주민번호 검증</button>
+    <script>
+        const numTest = function() {
+            const str = '820701-2409184';
+            // 6개의 숫자 - 7개의 숫자
+            let reg = /^[0-9]{6}-[0-9]{7}/;
+                reg = /^[0-9]{6}-[1-4][0-9]{6}/;
+
+            // 월 1~12
+            // 1자리 : 01 ~ 09
+            // 2자리 : 10 ~ 12
+            // (0[1-9]|1[0-2])
+
+            // 일 : 한자리 , 10자리/20자리 , 30/31
+            // (0[1-9]|[1-2][0-9]3[0-1])
+            reg = /^[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]3[0-1])-[0-9]{6}-[1-4][0-9]{6}$/;
+            if(reg.test(str)) {
+                alert('정상입력');
+            } else {
+                alert("잘못된 주민등록번호입니다.");
+            }
+        }
+    </script>
+    <h1>실습 문제</h1>
+    <input id="userPhone" type="text">
+    <script>
+        document.getElementById('userPhone').addEventListener('blur', function(e) {
+            const phoneReg = /^01[016789]-[0-9]{4}-[0-9]{4}$/;
+            if(phoneReg.test(e.target.value)) {
+                alert('올바른 전화번호');
+            } else {
+                alert('잘못된 전화번호');
+            }
+
+        })
+    </script>
+</body>
+</html>
