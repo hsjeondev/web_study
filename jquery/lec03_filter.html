@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필터링</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>필터링</h1>
+    <h4>가</h4>
+    <h4 class="test">나</h4>
+    <h4 class="test">다</h4>
+    <h4>라</h4>
+    <script>
+        $(document).ready(function() {
+            $('h4').first().css('color', 'crimson');
+            $('h4').last().css('border', '3px dotted green');
+            $('h4').eq(2).css('color', 'blue');
+            $('h4').not('.test').css('textDecoration', 'line-through');
+
+            $('h4').filter('.test').css('border', '3px double gold');
+            // 특정 글자를 포함하는 요소만 선택
+            $('h4').filter(function(index, item) {
+                return $(item).text().includes('나');
+            }).css('backgroundColor', 'pink');
+            $('h4').filter(function(index){
+                return index % 2 == 1;
+            }).css('borderRadius', '15px');
+            // 텍스트 길이가 2글자 이상인 요소만 선택
+            $('h4').filter(function(index, item) {
+                return $(this).text().length >= 2;
+            }).css('opacity', '0.2');
+        })
+    </script>
+    <h1>실습 문제</h1>
+    <h2>3글자 이상 데이터 찾기</h2>
+    <div class="data_div">
+        <p>가나다라</p>
+        <p>abcde</p>
+        <h3>썬칩</h3>
+        <h5>홈런볼</h5>
+        <span>초코칩쿠키</span>
+        <p>칸쵸</p>
+        <h5>초코파이</h5>
+        <h2>칙촉</h2>
+    </div>
+    <button id="checkBtn">확인하기</button>
+    <script>
+        $(function() {
+            $('#checkBtn').on('click', function() {
+                $('.data_div > *').filter(function(index, item) {
+                    return $(item).text().length >= 3;
+                }).css('color', 'orange');
+                $('.data_div > *').filter(function(index, item) {
+                    let english = /[a-z]/;
+                    return english.test($(item).text());
+                }).css('backgroundColor', 'gold');
+            })
+        })
+    </script>
+    <div id="grandparent">
+        할아버지
+        <div id="parent">
+            아버지
+            <p id="child">나</p>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#child').on('click', function() {
+                $(this).parent().css('color', 'gold');
+                $(this).parents('#grandparent').css('border', '3px dashed blue');
+                $(this).parentsUntil('#grandparent').css('background', 'black');
+            })
+        })
+    </script>
+    <div id="wrapper">
+        <div id="box">
+            <p>첫 번째 자식</p>
+            <p>두 번째 자식</p>
+            <span>세 번째 자식</span>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#box').children('p').css('border', '2px solid green');
+            $('#wrapper').find('p').css('color', 'pink');
+        })
+    </script>
+    <h1>SideWay 메소드</h1>
+    <div id="brother">
+        <p>p1</p>
+        <h1>h1</h1>
+        <h2 id="two">h2</h2>
+        <h3>h3</h3>
+        <p>p2</p>
+    </div>
+    <script>
+        $(function() {
+            $('#two').siblings('p').css('border', '3px dashed blue');
+            $('#two').next().css('color', 'green');
+            $('#two').nextAll().css('backgroundColor', 'gold');
+            $('#two').nextUntil('p').css('opacity', '0.2');
+
+            if($('#brother > *').is('h2')) {
+                console.log('h2있다!');
+            }
+        })
+    </script>
+    <button id="each_btn">each() 써보기</button>
+    <ul id="fruitList">
+        <li>사과2</li>
+        <li>바나나2</li>
+        <li>체리2</li>
+    </ul>
+    <script>
+        $(function() {
+            $('#each_btn').on('click',function() {
+                $('#fruitList li').each(function(index, item) {
+                    let txt = $(item).text();
+                    console.log(txt);
+                })
+
+                const fruits = ['사과', '바나나', '체리'];
+                const user = { name: '철수', age: 25, city: '서울' };
+                $.each(fruits, function(index, value) {
+                    console.log(`${index} : ${value}`);
+                })
+                $.each(user, function(key, value) {
+                    console.log(`${key} : ${value}`);
+                })
+            })
+        })
+    </script>
+</body>
+</html>
