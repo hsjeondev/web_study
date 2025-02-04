@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>게시판</h1>
+    <h2>글쓰기</h2>
+    <div id="eventContainer">
+        <form name="eventFrm">
+            <label for="title">제목</label>
+            <input type="text" name="title" id="title"><br>
+            <label for="type">종류</label>
+            <select name="type" id="type">
+                <option value="0">선택</option>
+                <option value="1">공지</option>
+                <option value="2">질문</option>
+                <option value="3">자유</option>
+            </select><br>
+            <label for="content">내용</label>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+            <span id="nowTextCnt">0</span>/100
+        </form>
+    </div>
+    <script>
+        $(function() {
+            $('#type').change(function() {
+                let selectVal = $('select[name=type] > option:selected').val();
+                let notice = '행사명 : \n행사일 : \n장 소 : ';
+                let question = '키워드 : \n요 약 : \n';
+                if(selectVal == 1) {
+                    $('#content').val(notice);
+                    $('#nowTextCnt').text(notice.length);
+                } else if(selectVal == 2) {
+                    $('#content').val(question);
+                    $('#nowTextCnt').text(question.length);
+                } else {
+                    $('#content').val('');
+                }
+            })
+            $('#content').keyup(function() {
+                $('#nowTextCnt').text($(this).val().length);
+            })
+        })
+    </script>
+    <hr>
+    <h1>제곱 계산기</h1>
+    2 * <span id="multiply_num">1</span> = <span id="resultNum">2</span>
+    <br><br>
+    <button id="click_btn">클릭</button>
+    <script>
+        $(function() {
+            $('#click_btn').click(function() {
+                let miltiplyNum = Number($('#multiply_num').text()); 
+                $('#multiply_num').text(++miltiplyNum);
+                $('#resultNum').text(miltiplyNum*2);
+            })
+        })
+    </script>
+</body>
+</html>

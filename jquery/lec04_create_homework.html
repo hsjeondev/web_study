@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 생성 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>10개까지 추가</h1>
+    <button id="add_btn">추가</button>
+    <script>
+        $(function() {
+            $('#add_btn').click(function() {
+                if($('input').length == 10) {
+                    alert('10개까지만 추가할 수 있습니다.')
+                } else {
+                    $('#add_btn').after('<br><input type=text>');
+                }
+            })
+        })
+    </script>
+    <hr>
+    <h1>게시판에 글쓰기</h1>
+    <input id="title1" type="radio" name="writeEl" value="1">
+    <label for="title1">제목1</label>
+    <br>
+    <input id="title2" type="radio" name="writeEl" value="2">
+    <label for="title2">제목2</label>
+    <br>
+    <input id="title3" type="radio" name="writeEl" value="3">
+    <label for="title3">제목3</label>
+    <br>
+    <input id="paragraph" type="radio" name="writeEl" value="4">
+    <label for="paragraph">문단</label>
+    <br>
+    <label for="inputText">내용</label>
+    <input id="inputText" type="text">
+    <script>
+        $(document).ready(function() {
+            $('#inputText').keydown(function(e) {
+                let text = $('#inputText').val();
+                if(e.key == 'Enter' && $('input[name=writeEl]:checked').length == 0) {
+                    alert('타입을 선택해주세요');
+                } else if(e.key == 'Enter') {
+                    let inputVal = $('input[name=writeEl]:checked').val();
+                    if(inputVal == 1) {
+                        $('#inputText').after(`<h1>${text}</h1>`);
+                    } else if(inputVal == 2) {
+                        $('#inputText').after(`<h2>${text}</h2>`);
+                    } else if(inputVal == 3) {
+                        $('#inputText').after(`<h3>${text}</h3>`);
+                    } else {
+                        $('#inputText').after(`<p>${text}</p>`);
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

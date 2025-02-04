@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 설정 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        #pwd_div {
+            display: flex;
+        }
+        #eye, #eye-slash{
+            width: 20px;
+            height: 20px;
+        }
+        #labelPwd{
+            margin-right: 5px;
+        }
+        #eye, #eye-slash{
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>비밀번호 보이기</h1>
+    <div id="pwd_div">
+        <label id="labelPwd" for="inputPwd">비밀번호</label>
+        <input id="inputPwd" type="password">
+        <!-- <i id="eye" class="fa-solid fa-eye"></i> -->
+        <i id="eye" class="fa-solid fa-eye-slash"></i>
+    </div>
+    <script>
+        $(function() {
+            let see = true;
+            $('#eye').click(function() {
+                if(see) {
+                    $(this).attr('class', 'fa-solid fa-eye');
+                    $('#inputPwd').attr('type', 'text');
+                    see = false;
+                } else {
+                    $(this).attr('class', 'fa-solid fa-eye-slash');
+                    $('#inputPwd').attr('type', 'password');
+                    see = true;
+                }
+            })
+        })
+    </script>
+    <hr>
+    <h1>늘어나는 이미지</h1>
+    <button id="widthBtn">가로</button>
+    <button id="heightBtn">세로</button>
+    <button id="stopBtn">멈추기</button>
+    <br>
+    <img id="spongeImg" src="../resources/sponge.png" width="100" height="100">
+    <script>
+        let widthItv;
+        let heightItv;
+        let isWidthClick = false;
+        let isHeightClick = false;
+        $('#widthBtn').click(function() {
+            if(!isWidthClick) {
+                widthItv = setInterval(function(){
+                $('#spongeImg').attr('width', Number($('#spongeImg').attr('width'))+10);
+                isWidthClick = true;
+            }, 1000)
+            }
+        })
+        $('#heightBtn').click(function() {
+            if(!isHeightClick) {
+                heightItv = setInterval(function(){
+                $('#spongeImg').attr('height', Number($('#spongeImg').attr('height'))+10);
+                isHeightClick = true;
+            }, 1000)
+            }
+        })
+        $('#stopBtn').click(function() {
+            clearInterval(widthItv);
+            clearInterval(heightItv);
+            isWidthClick = false;
+            isHeightClick = false;
+        })
+    </script>
+</body>
+</html>

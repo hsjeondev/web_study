@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>on 메소드</h1>
+    <div id="on_div">
+        <ul>
+            <li>html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <h3>h3이벤트</h3>
+    </div>
+    <script>
+        $(function() {
+            // $('#on_div > ul > li').on('mouseenter', function() {
+            //     console.log($(this).text());
+            // });
+            $('#on_div>ul>li').mouseenter(function() {
+                console.log($(this).text());
+            })
+            $('#on_div > h3').on({
+                'mouseenter' : function() {$(this).css('color', 'red')},
+                'mouseleave' : function() {$(this).css('color', 'gold')}
+            });
+        })
+    </script>
+    <h1>off 메소드</h1>
+    <button id="offBtn">이벤트</button>
+    <script>
+        $(function() {
+            let count = 0;
+            $('#offBtn').on('click', function() {
+                if(count++ < 3) {
+                    alert('버튼 클릭!');
+                } else {
+                    $(this).off('click');
+                }
+            })
+        })
+    </script>
+    <h1>실습 문제</h1>
+    <style>
+        .darkMode{
+            color : white;
+            background-color: black;
+        }
+    </style>
+    <button id="darkMode_btn">야간 모드</button>
+    <button id="no_func">비활성화</button>
+    <script>
+        $(function() {
+            $('#darkMode_btn').on('click', function() {
+                $('body').attr('class') ? $('body').removeClass('darkMode') : $('body').addClass('darkMode')
+            })
+            $('#no_func').click(function() {
+                $('#darkMode_btn').off('click');
+            })
+        })
+    </script>
+</body>
+</html>
